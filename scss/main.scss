@@ -39,12 +39,20 @@ body {
     margin: 0 auto;
     
     // &__paragraph {  // = .main__paragraph
-    #{&}__paragraph {  // = main .main__paragraph
+    #{&}__paragraph1 {  // = main .main__paragraph
         // font-weight: map-get($font-weights, bold);  // using the map directly
         font-weight: weight(bold);  // using through a function
         
         &:hover {
             color: pink;
+        }
+    }
+    
+    #{&}__paragraph2 {
+        @extend .main__paragraph1;
+        
+        &:hover {
+            color: $accent-color;
         }
     }
     
