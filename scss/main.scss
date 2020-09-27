@@ -1,9 +1,32 @@
 @import './resets';
 @import './variables';
 
+// functions should compute and return values
 @function weight($weight-name) {
     @return map-get($font-weights, $weight-name);
 }
+
+// mixins should define styles
+@mixin  flexCenter($direction) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: $direction;
+}
+
+@mixin theme($light-theme: true) {
+    @if $light-theme {
+        background: lighten($primary-color, 100%);
+        color: darken($text-color, 100%);
+    }
+}
+
+@mixin mobile {
+    @media (max-width: $mobile) {
+        @content;  // takes content from @include {} (mixin call)
+    }
+}
+
 
 body {
     background: $primary-color;
@@ -11,6 +34,7 @@ body {
 }
 
 .main {
+    @include flexCenter(row);
     width: 80%;
     margin: 0 auto;
     
@@ -23,4 +47,12 @@ body {
             color: pink;
         }
     }
+    
+    @include mobile {
+        flex-direction: column;
+    }
+}
+
+.light {
+    @include theme($light-theme: true);  // or just @include theme(true)
 }
