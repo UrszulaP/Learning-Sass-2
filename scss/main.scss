@@ -35,7 +35,7 @@ body {
 
 .main {
     @include flexCenter(row);
-    width: 80%;
+    width: 80% - 40%;  // in CSS: calc(80% - 40%), but no types mixing in Sass (% and px)
     margin: 0 auto;
     
     // &__paragraph {  // = .main__paragraph
